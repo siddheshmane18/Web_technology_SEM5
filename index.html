@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Amazon - Home</title>
+
+    <style>
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #eaeded;
+            color: #111;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+
+        .navbar {
+            height: 65px;
+            background-color: #131921;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 0 25px;
+            gap: 25px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #ff9900;
+        }
+
+        .nav-location {
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .nav-location strong {
+            display: block;
+            font-size: 14px;
+        }
+
+        .search-box {
+            flex: 1;
+            display: flex;
+            height: 40px;
+        }
+
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            font-size: 15px;
+            outline: none;
+        }
+
+        .search-box button {
+            width: 50px;
+            border: none;
+            background-color: #febd69;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .search-box button:hover {
+            background-color: #f3a847;
+        }
+
+        .nav-item {
+            font-size: 13px;
+            white-space: nowrap;
+        }
+
+        .nav-item strong {
+            display: block;
+            font-size: 15px;
+        }
+
+        .cart {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+
+
+        .category-nav {
+            background-color: #232f3e;
+            color: white;
+            display: flex;
+            align-items: center;
+            padding: 12px 25px;
+            gap: 25px;
+        }
+
+        .category-nav a {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .category-nav a:hover {
+            text-decoration: underline;
+        }
+
+
+
+        .main-container {
+            max-width: 1400px;
+            margin: auto;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 20px;
+        }
+
+
+        .sidebar {
+            background-color: white;
+            padding: 20px;
+            height: fit-content;
+            border-radius: 5px;
+        }
+
+        .sidebar h3 {
+            margin-bottom: 15px;
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 10px 5px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .sidebar a:hover {
+            color: #e47911;
+        }
+
+
+        .content {
+            min-width: 0;
+        }
+
+
+        .hero {
+            background-color: white;
+            border-radius: 5px;
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .section-title {
+            background-color: white;
+            padding: 15px 20px;
+            margin-bottom: 10px;
+            border-radius: 5px 5px 0 0;
+        }
+
+        .section-title h2 {
+            font-size: 24px;
+        }
+
+        .essentials {
+            background-color: white;
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 15px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .product-card {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            background-color: white;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-card h3 {
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: contain;
+        }
+
+        .product-card p {
+            margin-top: 10px;
+            color: #007185;
+            font-size: 14px;
+        }
+
+        .cart-section {
+            background-color: white;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .cart-section h2 {
+            margin-bottom: 20px;
+        }
+
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .cart-table th,
+        .cart-table td {
+            border: 1px solid #ccc;
+
+            padding: 12px;
+            text-align: center;
+        }
+
+        .cart-table th {
+            background-color: #232f3e;
+            color: white;
+        }
+
+        .cart-table tr:nth-child(even) {
+            background-color: #f7f7f7;
+        }
+
+        .cart-table tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .buy-button {
+            margin-top: 20px;
+            padding: 12px 35px;
+            background-color: #ffd814;
+            border: 1px solid #fcd200;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .buy-button:hover {
+            background-color: #f7ca00;
+        }
+
+        .footer {
+            background-color: #131921;
+            color: white;
+            padding: 35px;
+            text-align: center;
+        }
+
+        .footer h2 {
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            margin: 8px;
+        }
+
+        .footer a {
+            color: #00a8e1;
+        }
+
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <nav class="navbar">
+
+        <div class="logo">
+            amazon<span>.in</span>
+        </div>
+
+        <div class="nav-location">
+            Deliver to
+            <strong>📍 Pune 412105</strong>
+        </div>
+
+        <div class="search-box">
+
+            <input
+                type="text"
+                placeholder="Search Amazon.in"
+            >
+
+            <button>
+                search
+            </button>
+
+        </div>
+
+        <div class="nav-item">
+            Hello, Sign in
+            <strong>Account & Lists</strong>
+        </div>
+
+        <div class="nav-item">
+            Returns
+            <strong>& Orders</strong>
+        </div>
+
+        <div class="cart">
+             Cart
+        </div>
+
+    </nav>
+
+
+    <div class="category-nav">
+
+        <a href="#">☰ All</a>
+        <a href="#essentials">Today's Deals</a>
+        <a href="#essentials">Home Essentials</a>
+        <a href="#cart">Your Cart</a>
+        <a href="#support">Customer Service</a>
+        <a href="#">Sell</a>
+
+    </div>
+
+
+    <main class="main-container">
+
+
+        <aside class="sidebar">
+
+            <h3>Shop By Category</h3>
+
+            <a href="#">Electronics</a>
+            <a href="#">Mobiles</a>
+            <a href="#">Home Appliances</a>
+            <a href="#">Fashion</a>
+            <a href="#">Books</a>
+            <a href="#">Groceries</a>
+            <a href="#">Computers</a>
+            <a href="#">Beauty Products</a>
+
+        </aside>
+
+
+        <section class="content">
+
+
+            <div class="hero" id="home">
+
+                <img
+                    src="https://images-eu.ssl-images-amazon.com/images/G/31/img24/Media/1/toys/Desktop_tall_Hero_3000x1200_RC-Cars_1._CB784186419_.jpg"
+                    alt="Amazon Monsoon Deals"
+                >
+
+            </div>
+
+
+            <div class="section-title">
+
+                <h2 id="essentials">
+                    Home Essentials
+                </h2>
+
+            </div>
+
+
+            <div class="essentials">
+
+
+                <div class="product-card">
+
+                    <h3>Air Conditioners</h3>
+
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08RDL6H79._SY116_CB667322346_.jpg"
+                        alt="Air Conditioner"
+                    >
+
+                    <p>Shop Now →</p>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <h3>Refrigerators</h3>
+
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B08345R1ZW._SY116_CB667322346_.jpg"
+                        alt="Refrigerator"
+                    >
+
+                    <p>Shop Now →</p>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <h3>Microwaves</h3>
+
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/Appliances-QC-PC-186x116--B07G5J5FYP._SY116_CB667322346_.jpg"
+                        alt="Microwave"
+                    >
+
+                    <p>Shop Now →</p>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <h3>Washing Machines</h3>
+
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/IMG15/Irfan/GATEWAY/MSO/186x116---wm._SY116_CB667322346_.jpg"
+                        alt="Washing Machine"
+                    >
+
+                    <p>Shop Now →</p>
+
+                </div>
+
+
+                <div class="product-card">
+
+                    <h3>Home Tools</h3>
+
+                    <img
+                        src="https://images-eu.ssl-images-amazon.com/images/G/31/img18/HomeImprovement/harsmisc/2025/March/Tools_low_res_V1._SY116_CB549138744_.jpg"
+                        alt="Home Tools"
+                    >
+
+                    <p>Shop Now →</p>
+
+                </div>
+
+            </div>
+
+
+            <div class="cart-section" id="cart">
+
+                <h2>Your Cart</h2>
+
+                <table class="cart-table">
+
+                    <tr>
+                        <th>Order Name</th>
+                        <th>Quantity</th>
+                        <th>Price</th>
+                    </tr>
+
+                    <tr>
+                        <td>Xiaomi Power Bank</td>
+                        <td>1</td>
+                        <td>₹2500</td>
+                    </tr>
+
+                    <tr>
+                        <td>Mivi DuoPods Earbuds</td>
+                        <td>1</td>
+                        <td>₹999</td>
+                    </tr>
+
+                    <tr>
+                        <td>Noise Pulse 2 Max</td>
+                        <td>2</td>
+                        <td>₹2999</td>
+                    </tr>
+
+                </table>
+
+                <button class="buy-button">
+                    Proceed to Buy
+                </button>
+
+            </div>
+
+
+        </section>
+
+    </main>
+
+
+    <footer class="footer" id="support">
+
+        <h2>Customer Support</h2>
+
+        <p>
+            Contact No.: 1234567899
+        </p>
+
+        <p>
+            Send email to support:
+            <a href="mailto:amazonpay-grievance-officer@amazonpay.in">
+                Click to Mail
+            </a>
+        </p>
+
+        <p>
+            2026 Amazon Mini Project | HTML & CSS Assignment
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>
