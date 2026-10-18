@@ -1,7 +1,7 @@
-# AgriConnect - Web Technology Assignment
+# AgriConnect 
 
 ## Requirements covered
-- HTML, CSS and vanilla JavaScript
+- HTML, CSS and JavaScript
 - Arrays of objects for users, equipment and rental requests
 - JSON.stringify() / JSON.parse()
 - localStorage persistence
@@ -11,7 +11,7 @@
 
 ## Run
 1. Extract the ZIP.
-2. Open the `AgriConnect_Assignment` folder in VS Code.
+2. Open the `AgriConnect_` folder in VS Code.
 3. Recommended: use the Live Server extension to open `index.html`.
 4. If you use Live Server, open the same origin/port each time so localStorage remains available.
 5. Register an account. Choose `Equipment Owner` to add and manage listings.
