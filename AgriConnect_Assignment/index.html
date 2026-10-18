@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AgriConnect | Farmer-to-Farmer Equipment Rental</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <header class="site-header">
+    <nav class="navbar container">
+      <a class="logo" href="index.html">🌾 AgriConnect</a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">☰</button>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="equipment.html">Equipment</a></li>
+        <li><a href="index.html#how-it-works">How It Works</a></li>
+        <li><a href="index.html#about">About</a></li>
+      </ul>
+      <div class="nav-buttons" id="navButtons">
+        <a class="btn btn-outline" href="login.html">Login</a>
+        <a class="btn btn-primary" href="register.html">Register</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-content">
+        <div>
+          <span class="eyebrow">A farmer-to-farmer platform</span>
+          <h1>Good equipment.<br><span>Better farming.</span></h1>
+          <p>Find and rent agricultural equipment from farmers near you. Owners can list machinery and earn from equipment they already own.</p>
+          <div class="hero-actions">
+            <a href="equipment.html" class="btn btn-primary">Find Equipment</a>
+            <a href="add-equipment.html" class="btn btn-light">List Your Equipment</a>
+          </div>
+          <p class="small muted">Assignment demo: data is stored in this browser using arrays, JSON and localStorage.</p>
+        </div>
+        <div class="hero-art" aria-label="Tractor illustration">🚜<span>🌱</span></div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <div class="section-heading">
+        <div><span class="eyebrow">Browse by type</span><h2>Equipment categories</h2></div>
+        <a href="equipment.html" class="text-link">View all equipment →</a>
+      </div>
+      <div class="category-grid">
+        <a class="category-card" href="equipment.html?category=Tractor"><span>🚜</span><strong>Tractors</strong></a>
+        <a class="category-card" href="equipment.html?category=Cultivator"><span>🌱</span><strong>Cultivators</strong></a>
+        <a class="category-card" href="equipment.html?category=Irrigation"><span>💧</span><strong>Irrigation</strong></a>
+        <a class="category-card" href="equipment.html?category=Harvester"><span>🌾</span><strong>Harvesters</strong></a>
+        <a class="category-card" href="equipment.html?category=Sprayer"><span>🧴</span><strong>Sprayers</strong></a>
+        <a class="category-card" href="equipment.html?category=Other Tools"><span>🛠️</span><strong>Other tools</strong></a>
+      </div>
+    </section>
+
+    <section class="section section-soft" id="how-it-works">
+      <div class="container">
+        <div class="section-heading centered"><div><span class="eyebrow">Simple process</span><h2>How AgriConnect works</h2></div></div>
+        <div class="steps-grid">
+          <article class="step-card"><span class="step-number">01</span><h3>Search</h3><p>Find equipment by name, category or location.</p></article>
+          <article class="step-card"><span class="step-number">02</span><h3>Choose</h3><p>Review the equipment details and daily price.</p></article>
+          <article class="step-card"><span class="step-number">03</span><h3>Request</h3><p>Sign in and send a rental request to the owner.</p></article>
+          <article class="step-card"><span class="step-number">04</span><h3>Rent</h3><p>Track your request status from My Rentals.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container" id="about">
+      <div class="about-panel"><div><span class="eyebrow">About AgriConnect</span><h2>Helping farmers share resources</h2></div><p>AgriConnect connects farmers who need agricultural machinery with nearby farmers who can rent it out. The goal is to improve equipment use, reduce purchase costs and create additional income opportunities.</p><a class="btn btn-primary" href="equipment.html">Explore Equipment</a></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><div class="container footer-content"><div><a class="logo footer-logo" href="index.html">🌾 AgriConnect</a><p>Connecting farmers with farming equipment.</p></div><div><strong>Quick links</strong><a href="equipment.html">Equipment</a><a href="add-equipment.html">List equipment</a><a href="my-rentals.html">My rentals</a></div><div><strong>Account</strong><a href="login.html">Login</a><a href="register.html">Register</a></div></div><div class="copyright">© 2026 AgriConnect · Web Technology assignment</div></footer>
+</body>
+</html>
