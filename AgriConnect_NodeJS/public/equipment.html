@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Equipment | AgriConnect</title><link rel="stylesheet" href="/css/style.css"><script src="/js/app.js" defer></script></head>
+<body>
+<header class="site-header"><a class="brand" href="/">🌱 AgriConnect</a><nav><a href="/add-equipment.html" data-owner-link hidden>Add Equipment</a><a href="/login.html" data-guest-link>Login</a><a href="/register.html" data-guest-link>Register</a><button id="logoutButton" class="link-button" hidden>Logout</button></nav></header>
+<main class="section">
+  <p class="eyebrow">AVAILABLE MACHINERY</p><h1>Browse equipment</h1><p class="muted">Search and filter agricultural equipment listed by owners.</p>
+  <form id="searchForm" class="filters">
+    <input id="searchQuery" name="q" placeholder="Search tractor, rotavator, location...">
+    <select id="categoryFilter"><option value="">All categories</option><option>Tractor</option><option>Tillage Equipment</option><option>Harvester</option><option>Seeder</option><option>Sprayer</option><option>Other</option></select>
+    <select id="sortFilter"><option value="newest">Newest first</option><option value="price-asc">Price: low to high</option><option value="price-desc">Price: high to low</option></select>
+    <button class="button" type="submit">Search</button>
+  </form>
+  <div id="pageMessage" class="message" role="status"></div>
+  <div id="equipmentGrid" class="grid three"></div>
+</main><footer>AgriConnect</footer></body></html>

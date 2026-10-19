@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Register | AgriConnect</title><link rel="stylesheet" href="/css/style.css"><script src="/js/app.js" defer></script></head>
+<body>
+<header class="site-header"><a class="brand" href="/">🌱 AgriConnect</a><nav><a href="/equipment.html">Equipment</a><a href="/login.html">Login</a></nav></header>
+<main class="form-page">
+  <section class="form-card">
+    <p class="eyebrow">CREATE YOUR ACCOUNT</p><h1>Join AgriConnect</h1>
+    <p class="muted">Create an account as a farmer/renter or equipment owner.</p>
+    <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+    <form id="registerForm" novalidate>
+      <label for="name">Full name</label><input id="name" name="name" autocomplete="name" maxlength="60" required>
+      <label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" maxlength="120" required>
+      <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="new-password" minlength="8" maxlength="72" required><small>Use at least 8 characters.</small>
+      <label for="role">Account type</label><select id="role" name="role" required><option value="">Select role</option><option value="farmer">Farmer / Renter</option><option value="owner">Equipment Owner</option></select>
+      <button class="button full" type="submit">Create account</button>
+    </form>
+    <p class="form-bottom">Already registered? <a href="/login.html">Log in</a></p>
+  </section>
+</main>
+<footer>AgriConnect · Server-side validation demonstration</footer>
+</body></html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgriConnect | Agricultural Equipment Rental</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/">🌱 AgriConnect</a>
+  <nav>
+    <a href="/equipment.html">Equipment</a>
+    <a href="/add-equipment.html" data-owner-link hidden>Add Equipment</a>
+    <a href="/my-equipment.html" data-owner-link hidden>My Equipment</a>
+    <a href="/my-rentals.html" data-user-link hidden>My Rentals</a>
+    <a href="/owner-requests.html" data-owner-link hidden>Rental Requests</a>
+    <a href="/login.html" data-guest-link>Login</a>
+    <a href="/register.html" data-guest-link class="button small">Register</a>
+    <button id="logoutButton" class="link-button" hidden>Logout</button>
+  </nav>
+</header>
+<main>
+  <section class="hero">
+    <div>
+      <p class="eyebrow">SMARTER FARMING, SHARED RESOURCES</p>
+      <h1>Rent the right equipment.<br><span>Grow more together.</span></h1>
+      <p>Find tractors, rotavators, and other agricultural equipment offered by local owners.</p>
+      <div class="actions">
+        <a class="button" href="/equipment.html">Browse Equipment</a>
+        <a class="button secondary" href="/register.html">Join AgriConnect</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-icon">🚜</div>
+      <h2>Equipment when you need it</h2>
+      <p>Explore available listings and send rental requests online.</p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="section-heading">
+      <div><p class="eyebrow">HOW IT WORKS</p><h2>Simple for farmers and owners</h2></div>
+    </div>
+    <div class="grid three">
+      <article class="card"><div class="card-icon">🔎</div><h3>Find equipment</h3><p>Search by name, category, location, or daily rental price.</p></article>
+      <article class="card"><div class="card-icon">🧾</div><h3>Send a request</h3><p>Choose your dates and submit a rental request.</p></article>
+      <article class="card"><div class="card-icon">🛠️</div><h3>List your machine</h3><p>Owners can add, update, and manage their equipment.</p></article>
+    </div>
+  </section>
+  <section class="notice"><strong>Assignment focus:</strong> Form submissions are validated by the Node.js server, even when browser-side checks are bypassed.</section>
+</main>
+<footer>AgriConnect · Web Technology Assignment 2 · Node.js server-side validation</footer>
+</body>
+</html>

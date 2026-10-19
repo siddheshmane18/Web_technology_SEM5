@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Login | AgriConnect</title><link rel="stylesheet" href="/css/style.css"><script src="/js/app.js" defer></script></head>
+<body>
+<header class="site-header"><a class="brand" href="/">🌱 AgriConnect</a><nav><a href="/equipment.html">Equipment</a><a href="/register.html">Register</a></nav></header>
+<main class="form-page">
+  <section class="form-card">
+    <p class="eyebrow">WELCOME BACK</p><h1>Log in</h1><p class="muted">Access your AgriConnect account.</p>
+    <div id="formMessage" class="message" role="status" aria-live="polite"></div>
+    <form id="loginForm" novalidate>
+      <label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" required>
+      <label for="password">Password</label><input id="password" name="password" type="password" autocomplete="current-password" required>
+      <button class="button full" type="submit">Log in</button>
+    </form>
+    <p class="form-bottom">New to AgriConnect? <a href="/register.html">Create an account</a></p>
+  </section>
+</main><footer>AgriConnect · Server-side validation demonstration</footer></body></html>

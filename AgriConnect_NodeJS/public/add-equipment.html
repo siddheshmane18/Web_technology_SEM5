@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Add Equipment | AgriConnect</title><link rel="stylesheet" href="/css/style.css"><script src="/js/app.js" defer></script></head>
+<body><header class="site-header"><a class="brand" href="/">🌱 AgriConnect</a><nav><a href="/equipment.html">Equipment</a><a href="/my-equipment.html">My Equipment</a></nav></header>
+<main class="form-page"><section class="form-card wide">
+<p class="eyebrow">EQUIPMENT OWNER</p><h1>Add equipment listing</h1><p class="muted">The server validates every field before saving the listing.</p>
+<div id="formMessage" class="message" role="status" aria-live="polite"></div>
+<form id="equipmentForm" novalidate>
+<label for="name">Equipment name</label><input id="name" name="name" maxlength="80" placeholder="e.g. Rotavator" required>
+<label for="category">Category</label><select id="category" name="category" required><option value="">Choose category</option><option>Tractor</option><option>Tillage Equipment</option><option>Harvester</option><option>Seeder</option><option>Sprayer</option><option>Other</option></select>
+<label for="price">Rental price per day (₹)</label><input id="price" name="price" type="number" min="1" max="1000000" step="1" required>
+<label for="location">Location</label><input id="location" name="location" maxlength="100" placeholder="e.g. Aurangabad, Maharashtra" required>
+<label for="condition">Condition</label><select id="condition" name="condition" required><option>Good</option><option>Excellent</option><option>Fair</option></select>
+<label for="description">Description</label><textarea id="description" name="description" minlength="10" maxlength="1000" rows="4" placeholder="Describe the equipment and suitable uses..." required></textarea>
+<button class="button full" type="submit">Save equipment</button>
+</form></section></main><footer>AgriConnect · Server-side validation demonstration</footer></body></html>

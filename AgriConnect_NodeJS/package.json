@@ -1,0 +1,12 @@
+{
+  "name": "agriconnect-nodejs-assignment",
+  "version": "1.0.0",
+  "description": "AgriConnect demonstrating server-side validation using only built-in Node.js modules",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

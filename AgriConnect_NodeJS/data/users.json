@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Siddhesh Mane",
+    "email": "siddheshmane2011@gmail.com",
+    "role": "owner",
+    "salt": "d1428ea2578ee6cd45b5f1c66f1fa10d",
+    "passwordHash": "d0a93b810c41eee90198380115c765986a99f1dc270d6a42d8a0f8054c06e2bf8da14888e0f51919cebd3b8e73e6c8280df7820d95ca38955969b69f0b6fa511",
+    "createdAt": "2026-10-19T08:38:15.810Z"
+  },
+  {
+    "id": 2,
+    "name": "Ram Patil",
+    "email": "202401040187@mitaoe.ac.in",
+    "role": "farmer",
+    "salt": "f92be7812d2e1ab3f7b9dadf1628d653",
+    "passwordHash": "757e2a8dfb4308f9399500ba6d01bcc596f40c0b80623c279a27ae9d4d47f0e1b881899fa92468b0f72354bcfed4a62ec34e0062b23ab36434e5db8328da2b2d",
+    "createdAt": "2026-10-19T08:48:02.959Z"
+  }
+]

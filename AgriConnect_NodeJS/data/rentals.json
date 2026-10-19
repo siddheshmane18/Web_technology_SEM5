@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1,
+    "equipmentId": 3,
+    "equipmentName": "Harvester",
+    "ownerId": 1,
+    "renterId": 2,
+    "renterName": "Ram Patil",
+    "startDate": "2026-10-19",
+    "days": 5,
+    "totalPrice": 10000,
+    "status": "pending",
+    "createdAt": "2026-10-19T08:49:07.759Z"
+  }
+]

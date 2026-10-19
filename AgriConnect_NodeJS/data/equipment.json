@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "name": "Rotavator",
+    "category": "Harvester",
+    "price": 500,
+    "location": "Kolhapur, Maharashtra",
+    "description": "Well maintained rotavator of Mahindra company.",
+    "condition": "Good",
+    "ownerId": 1,
+    "ownerName": "Siddhesh Mane",
+    "status": "available",
+    "createdAt": "2026-10-19T08:40:40.578Z",
+    "updatedAt": "2026-10-19T08:47:02.385Z"
+  },
+  {
+    "id": 2,
+    "name": "Mahindra Tractor",
+    "category": "Tractor",
+    "price": 1500,
+    "location": "Alandi",
+    "description": "Well maintained",
+    "condition": "Good",
+    "ownerId": 1,
+    "ownerName": "Siddhesh Mane",
+    "status": "available",
+    "createdAt": "2026-10-19T08:42:04.816Z"
+  },
+  {
+    "id": 3,
+    "name": "Harvester",
+    "category": "Harvester",
+    "price": 2000,
+    "location": "Alandi",
+    "description": "Good condition of harvester",
+    "condition": "Good",
+    "ownerId": 1,
+    "ownerName": "Siddhesh Mane",
+    "status": "available",
+    "createdAt": "2026-10-19T08:44:09.113Z"
+  }
+]
