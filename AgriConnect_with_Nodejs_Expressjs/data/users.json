@@ -1,0 +1,12 @@
+[
+  {
+    "id": "user-f614f295-697a-4094-ab02-5bd33c96988b",
+    "name": "Ram Patil",
+    "email": "202401040187@mitaoe.ac.in",
+    "phone": "8748596231",
+    "location": "Pune",
+    "role": "renter",
+    "passwordHash": "$2a$12$5N5mzuzG3ryRuM0zp5iUA.Ilbs9.AMPkCwwWkL64m2mCCJrKtshkG",
+    "createdAt": "2026-10-20T11:39:32.575Z"
+  }
+]
