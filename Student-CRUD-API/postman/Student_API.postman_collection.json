@@ -1,0 +1,139 @@
+{
+  "info": {
+    "_postman_id": "6bbf7757-9f2a-4d42-bc0d-0d22a812d1f0",
+    "name": "Student Management CRUD API",
+    "description": "Demonstration collection for the Student Management REST API. Run requests in order: Health, Create, Read All, Read By ID, Update, Validation Failure, Delete, Read Deleted Record.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:5000", "type": "string" },
+    { "key": "studentId", "value": "", "type": "string" }
+  ],
+  "item": [
+    {
+      "name": "1. Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/health"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Health endpoint returns 200', function () { pm.response.to.have.status(200); });",
+          "pm.test('API reports healthy status', function () { const body = pm.response.json(); pm.expect(body.success).to.eql(true); pm.expect(body.status).to.eql('ok'); });"
+        ] }
+      }]
+    },
+    {
+      "name": "2. CREATE - Add Student",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Aarav Kulkarni\",\n  \"email\": \"aarav.{{$timestamp}}@example.com\",\n  \"rollNumber\": \"DEMO-{{$timestamp}}\",\n  \"department\": \"Computer Engineering\",\n  \"semester\": 5,\n  \"phone\": \"9876543210\",\n  \"cgpa\": 8.4\n}", "options": { "raw": { "language": "json" } } },
+        "url": "{{baseUrl}}/api/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Student is created with 201', function () { pm.response.to.have.status(201); });",
+          "const body = pm.response.json();",
+          "pm.test('Response contains the created student', function () { pm.expect(body.success).to.eql(true); pm.expect(body.student).to.have.property('_id'); });",
+          "if (body.student && body.student._id) { pm.collectionVariables.set('studentId', body.student._id); }"
+        ] }
+      }]
+    },
+    {
+      "name": "3. READ - Get All Students",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Student list returns 200', function () { pm.response.to.have.status(200); });",
+          "pm.test('Response contains an array', function () { const body = pm.response.json(); pm.expect(body.students).to.be.an('array'); pm.expect(body.count).to.be.a('number'); });"
+        ] }
+      }]
+    },
+    {
+      "name": "4. READ - Get Student By ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Student lookup returns 200', function () { pm.response.to.have.status(200); });",
+          "pm.test('Returned ID matches the saved ID', function () { const body = pm.response.json(); pm.expect(body.student._id).to.eql(pm.collectionVariables.get('studentId')); });"
+        ] }
+      }]
+    },
+    {
+      "name": "5. UPDATE - Edit Student",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"Aarav Kulkarni Updated\",\n  \"email\": \"aarav.{{$timestamp}}@example.com\",\n  \"rollNumber\": \"DEMO-{{$timestamp}}\",\n  \"department\": \"Computer Engineering\",\n  \"semester\": 6,\n  \"phone\": \"9876543210\",\n  \"cgpa\": 8.8\n}", "options": { "raw": { "language": "json" } } },
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Student update returns 200', function () { pm.response.to.have.status(200); });",
+          "pm.test('Updated fields are returned', function () { const body = pm.response.json(); pm.expect(body.student.fullName).to.eql('Aarav Kulkarni Updated'); pm.expect(body.student.semester).to.eql(6); });"
+        ] }
+      }]
+    },
+    {
+      "name": "6. VALIDATION - Reject Invalid Student",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": { "mode": "raw", "raw": "{\n  \"fullName\": \"A\",\n  \"email\": \"not-an-email\",\n  \"rollNumber\": \"!\",\n  \"department\": \"Unknown Department\",\n  \"semester\": 12,\n  \"phone\": \"12345\",\n  \"cgpa\": 15\n}", "options": { "raw": { "language": "json" } } },
+        "url": "{{baseUrl}}/api/students"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Invalid data is rejected with 400', function () { pm.response.to.have.status(400); });",
+          "pm.test('Field validation errors are returned', function () { const body = pm.response.json(); pm.expect(body.success).to.eql(false); pm.expect(body.errors).to.be.an('object'); pm.expect(Object.keys(body.errors).length).to.be.above(0); });"
+        ] }
+      }]
+    },
+    {
+      "name": "7. DELETE - Remove Student",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Student deletion returns 200', function () { pm.response.to.have.status(200); });",
+          "pm.test('Deletion response is successful', function () { pm.expect(pm.response.json().success).to.eql(true); });"
+        ] }
+      }]
+    },
+    {
+      "name": "8. READ - Confirm Deleted Student Returns 404",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": "{{baseUrl}}/api/students/{{studentId}}"
+      },
+      "event": [{
+        "listen": "test",
+        "script": { "type": "text/javascript", "exec": [
+          "pm.test('Deleted student is no longer found', function () { pm.response.to.have.status(404); });",
+          "pm.test('Not-found response is clear', function () { pm.expect(pm.response.json().message).to.eql('Student not found.'); });"
+        ] }
+      }]
+    }
+  ]
+}
