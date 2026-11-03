@@ -1,7 +1,10 @@
-const dns = require('node:dns');
+const dns = require("node:dns");
 
-// Workaround for Node.js DNS SRV resolution on Windows
-dns.setServers(['8.8.8.8', '1.1.1.1']);
+// Windows DNS workaround for MongoDB Atlas SRV resolution
+if (process.platform === "win32") {
+    dns.setServers(["1.1.1.1", "8.8.8.8"]);
+}
+
 require('dotenv').config();
 const app = require('./app');
 const connectDB = require('./config/db');

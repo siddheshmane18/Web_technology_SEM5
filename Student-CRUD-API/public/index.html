@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Student Management CRUD application" />
+  <title>Student Management | CRUD App</title>
+  <link rel="stylesheet" href="/styles.css" />
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="/" aria-label="Student Management home">
+        <span class="brand-mark">S</span>
+        <span>Student<span class="brand-light">Desk</span></span>
+      </a>
+      <div class="topbar-meta">
+        <span class="status-dot"></span>
+        <span>Student Management System</span>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <section class="intro-row">
+      <div>
+        <p class="eyebrow">ACADEMIC CRUD DEMONSTRATION</p>
+        <h1>Student Management</h1>
+        <p class="intro-copy">Create, view, update and remove student records from your MongoDB database.</p>
+      </div>
+      <button class="button button-primary" id="addStudentButton" type="button">
+        <span aria-hidden="true">＋</span> Add student
+      </button>
+    </section>
+
+    <section class="stats-grid" aria-label="Student statistics">
+      <article class="stat-card">
+        <span class="stat-label">Students shown</span>
+        <strong class="stat-value" id="totalCount">—</strong>
+        <span class="stat-foot">Current result</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Department</span>
+        <strong class="stat-value stat-text" id="departmentCount">—</strong>
+        <span class="stat-foot">Distinct in results</span>
+      </article>
+      <article class="stat-card">
+        <span class="stat-label">Average CGPA</span>
+        <strong class="stat-value" id="averageCgpa">—</strong>
+        <span class="stat-foot">Current result</span>
+      </article>
+    </section>
+
+    <section class="panel directory-panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">DATABASE RECORDS</p>
+          <h2>Student directory</h2>
+        </div>
+        <button class="button button-quiet" id="refreshButton" type="button">↻ Refresh</button>
+      </div>
+
+      <div class="filters-row">
+        <label class="search-box" for="searchInput">
+          <span aria-hidden="true">⌕</span>
+          <input id="searchInput" type="search" placeholder="Search name, email or roll number..." autocomplete="off" />
+        </label>
+        <label class="filter-control" for="departmentFilter">
+          <span>Department</span>
+          <select id="departmentFilter">
+            <option value="">All departments</option>
+            <option>Computer Engineering</option>
+            <option>Information Technology</option>
+            <option>Mechanical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Electronics and Telecommunication</option>
+            <option>Electrical Engineering</option>
+          </select>
+        </label>
+        <label class="filter-control semester-filter" for="semesterFilter">
+          <span>Semester</span>
+          <select id="semesterFilter">
+            <option value="">All semesters</option>
+            <option value="1">Semester 1</option>
+            <option value="2">Semester 2</option>
+            <option value="3">Semester 3</option>
+            <option value="4">Semester 4</option>
+            <option value="5">Semester 5</option>
+            <option value="6">Semester 6</option>
+            <option value="7">Semester 7</option>
+            <option value="8">Semester 8</option>
+          </select>
+        </label>
+        <button class="button button-outline" id="resetFiltersButton" type="button">Reset</button>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Student</th>
+              <th>Roll number</th>
+              <th>Department</th>
+              <th>Semester</th>
+              <th>Phone</th>
+              <th>CGPA</th>
+              <th class="actions-heading">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentsTableBody">
+            <tr><td colspan="7" class="table-message">Loading student records...</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="table-footer">
+        <span id="resultSummary">Loading records...</span>
+        <span class="api-label"><span class="status-dot"></span> API connected through this server</span>
+      </div>
+    </section>
+
+    <section class="panel form-panel" id="studentFormPanel" hidden>
+      <div class="panel-heading form-heading">
+        <div>
+          <p class="eyebrow" id="formEyebrow">NEW RECORD</p>
+          <h2 id="formTitle">Add a student</h2>
+          <p class="section-subtitle">Fields marked with * are required.</p>
+        </div>
+        <button class="icon-button" id="closeFormButton" type="button" aria-label="Close form">×</button>
+      </div>
+
+      <div class="form-alert" id="formAlert" role="alert" hidden></div>
+      <form id="studentForm" novalidate>
+        <div class="form-grid">
+          <div class="field-group">
+            <label for="fullName">Full name *</label>
+            <input id="fullName" name="fullName" type="text" maxlength="80" placeholder="e.g. Aarav Kulkarni" autocomplete="name" />
+            <small class="field-error" id="fullNameError"></small>
+          </div>
+          <div class="field-group">
+            <label for="email">Email address *</label>
+            <input id="email" name="email" type="email" maxlength="120" placeholder="name@example.com" autocomplete="email" />
+            <small class="field-error" id="emailError"></small>
+          </div>
+          <div class="field-group">
+            <label for="rollNumber">Roll number *</label>
+            <input id="rollNumber" name="rollNumber" type="text" maxlength="20" placeholder="e.g. CE2024001" />
+            <small class="field-error" id="rollNumberError"></small>
+          </div>
+          <div class="field-group">
+            <label for="department">Department *</label>
+            <select id="department" name="department">
+              <option value="">Select department</option>
+              <option>Computer Engineering</option>
+              <option>Information Technology</option>
+              <option>Mechanical Engineering</option>
+              <option>Civil Engineering</option>
+              <option>Electronics and Telecommunication</option>
+              <option>Electrical Engineering</option>
+            </select>
+            <small class="field-error" id="departmentError"></small>
+          </div>
+          <div class="field-group">
+            <label for="semester">Semester *</label>
+            <select id="semester" name="semester">
+              <option value="">Select semester</option>
+              <option value="1">1</option><option value="2">2</option>
+              <option value="3">3</option><option value="4">4</option>
+              <option value="5">5</option><option value="6">6</option>
+              <option value="7">7</option><option value="8">8</option>
+            </select>
+            <small class="field-error" id="semesterError"></small>
+          </div>
+          <div class="field-group">
+            <label for="phone">Mobile number *</label>
+            <input id="phone" name="phone" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit Indian mobile number" />
+            <small class="field-error" id="phoneError"></small>
+          </div>
+          <div class="field-group">
+            <label for="cgpa">CGPA *</label>
+            <input id="cgpa" name="cgpa" type="number" min="0" max="10" step="0.01" placeholder="e.g. 8.4" />
+            <small class="field-error" id="cgpaError"></small>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="button button-primary" id="saveButton" type="submit">Save student</button>
+          <button class="button button-outline" id="cancelButton" type="button">Cancel</button>
+        </div>
+      </form>
+    </section>
+
+    <footer class="page-footer">
+      <span>StudentDesk · CRUD API demonstration</span>
+      <span>Node.js · Express · MongoDB Atlas</span>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <div class="confirm-backdrop" id="confirmDialog" hidden>
+    <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirmTitle">
+      <div class="confirm-icon">!</div>
+      <h2 id="confirmTitle">Delete student?</h2>
+      <p id="confirmMessage">This action cannot be undone.</p>
+      <div class="confirm-actions">
+        <button class="button button-outline" id="confirmCancel" type="button">Cancel</button>
+        <button class="button button-danger" id="confirmDelete" type="button">Delete record</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

@@ -29,6 +29,10 @@ This project manages student records through a REST API. It uses:
 
 ```text
 Student-CRUD-API/
+├── public/
+│   ├── index.html
+│   ├── styles.css
+│   └── app.js
 ├── src/
 │   ├── config/db.js
 │   ├── controllers/studentController.js
@@ -48,6 +52,14 @@ Student-CRUD-API/
 ├── SUBMISSION_REPORT_TEMPLATE.md
 └── README.md
 ```
+
+## Browser frontend
+
+A basic responsive frontend is served by Express at the root URL (`http://localhost:5000`). It supports listing, searching, department/semester filters, adding, editing and deleting students. The form performs client-side validation before calling the API, and also displays validation errors returned by Express.
+
+The frontend files are `public/index.html`, `public/styles.css` and `public/app.js`. It uses the same origin as the API, so no separate frontend server or CORS configuration is required.
+
+After starting the API, open `http://localhost:5000` to use the browser interface. See `README_FRONTEND_ADDON.md` for the update and deployment steps.
 
 ## API endpoints
 
@@ -189,9 +201,11 @@ To test your hosted service, duplicate the Postman environment and change `baseU
 
 ## Deploy on Render
 
-1. Create a GitHub repository for this standalone project and push the contents of this project folder to its root. Do not upload `.env` or `node_modules`.
-2. In Render, create a **New Web Service** and connect the GitHub repository.
-3. Choose the Node runtime.
+If this project is stored inside your existing `Web_technology_SEM5` repository at `Student-CRUD-API/`, configure Render's **Root Directory** as `Student-CRUD-API`. If you have placed the project files directly at the repository root, leave Root Directory blank. Do not upload `.env` or `node_modules`.
+
+1. In Render, create a **New Web Service** and connect the GitHub repository.
+2. Choose the Node runtime.
+3. Set Root Directory as described above.
 4. Set the build command to `npm install`.
 5. Set the start command to `npm start`.
 6. Add environment variables in Render:
@@ -199,9 +213,10 @@ To test your hosted service, duplicate the Postman environment and change `baseU
    - `NODE_ENV` = `production`.
    - `PORT` is normally supplied by Render; the application reads it automatically and defaults to 5000 locally.
 7. Create the service and wait for the deploy to finish.
-8. Open `https://YOUR-SERVICE.onrender.com/api/health`. Confirm it returns the healthy JSON response.
-9. Duplicate your Postman environment, change `baseUrl` to the Render URL, and test all CRUD requests against the hosted API.
-10. Save screenshots of the deployed health endpoint, the successful Create/Read/Update/Delete responses, and the validation-failure response for your assignment evidence.
+8. Open `https://YOUR-SERVICE.onrender.com/` to use the browser frontend.
+9. Open `https://YOUR-SERVICE.onrender.com/api/health` and confirm it returns the healthy JSON response.
+10. Duplicate your Postman environment, change `baseUrl` to the Render URL, and test all CRUD requests against the hosted API.
+11. Save screenshots of the deployed frontend, health endpoint, successful Create/Read/Update/Delete responses, and the validation-failure response for your assignment evidence.
 
 Render's free web services may spin down after inactivity, so the first request after a quiet period can take longer. Check the current Render plan details before relying on it for a live presentation.
 
